@@ -94,20 +94,15 @@
 <body>
 
   <header>
-    <h1>JAX ATAC</h1>
-    <p>A short description of your project goes here</p>
+    <h1>Evolutionary transfer learning of the regulatory grammar of mammalian genomes</h1>
   </header>
 
   <main>
 
     <section>
-      <h2>About</h2>
+      <h2>Abstract</h2>
       <p>
-        Write a brief description of your project here. What does it do? Who is it for?
-        Keep it short and clear.
-      </p>
-      <p>
-        You can add a second paragraph with more detail, links to a paper, or any other context.
+        Mammalian development is orchestrated by the interplay of trans-acting factors and cis-regulatory elements. However, while genome sequences evolve rapidly, the regulatory grammar that governs their interpretation evolves far more slowly. We hypothesized that this pronounced mismatch in evolutionary tempos creates a powerful opportunity for “evolutionary transfer learning”, in that models trained to learn cell type-specific cis-regulatory grammars in one mammalian species should generalize to the orthologous cell types of other mammals. To test this, we generated a time-resolved atlas of chromatin accessibility across mouse development from embryonic day 10 (E10) to birth (P0). Using single-cell combinatorial indexing, we profiled 3.9 million nuclei from 36 precisely staged embryos, resolving dynamic accessibility landscapes across 36 cell classes and 140 cell types. From these data, we applied a multi-output deep learning model, CREsted, to predict cell type-specific chromatin accessibility from DNA sequence. However, while “evolution-naive” models performed well within peak-defined regions, genome-wide inference revealed systematic failure modes, including overprediction at tandem repeats and conflation of promoter and distal enhancer grammars. To address this, we introduced an “evolution-aware” framework that isolates distal enhancer grammars by requiring both syntenic persistence and functional coherence across mammals, defined as sequence-intrinsic regulatory behavior that is concordant across enhancer orthologs and robust to in silico tandem repeat disruption. This updated CREsted model produced refined genomewide regulatory maps whose predicted enhancer activity scaled with enhancer score and enhancer–promoter proximity to explain cell type-specific gene expression. Incorporating syntenic enhancer orthologs from up to 240 placental mammals directly into training expanded the effective regulatory corpus by more than two orders of magnitude. Finally, applying the fully evolution-augmented model to the human genome yielded distal enhancer maps for orthologous human cell types. Taken together, our results unify advances in single-cell molecular profiling, deep learning, and comparative genomics into a framework for model-driven reconstruction of human cis-regulatory landscapes, including for cell types that emerge during the embryonic, fetal, and pediatric stages of human development that are largely inaccessible to molecular profiling. More broadly, our work supports the view that model organisms and evolutionarily diverse non-human genomes are indispensable resources for accelerating the AI-enabled exploration of human biology.
       </p>
     </section>
 
