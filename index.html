@@ -1,1 +1,157 @@
-<p>Hello, world!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JAX ATAC</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f4faf4;
+      color: #2d2d2d;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #2e7d32, #43a047);
+      color: white;
+      padding: 56px 24px;
+      text-align: center;
+    }
+
+    header h1 { font-size: 2.4rem; margin-bottom: 8px; letter-spacing: -0.5px; }
+    header p  { font-size: 1.1rem; opacity: 0.88; }
+
+    main {
+      max-width: 800px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+
+    section { margin-bottom: 40px; }
+
+    section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #43a047;
+      color: #2e7d32;
+    }
+
+    section p { margin-bottom: 12px; color: #555; }
+    section a { color: #2e7d32; }
+
+    .download-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .download-list li {
+      background: white;
+      border: 1px solid #c8e6c9;
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      box-shadow: 0 1px 4px rgba(46,125,50,0.07);
+    }
+
+    .file-info .file-name { font-weight: 600; font-size: 1rem; color: #1b5e20; }
+    .file-info .file-desc { font-size: 0.85rem; color: #888; margin-top: 2px; }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 20px;
+      background: #2e7d32;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn:hover { background: #1b5e20; }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: #aaa;
+      font-size: 0.85rem;
+      border-top: 1px solid #c8e6c9;
+      margin-top: 48px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>JAX ATAC</h1>
+    <p>A short description of your project goes here</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>About</h2>
+      <p>
+        Write a brief description of your project here. What does it do? Who is it for?
+        Keep it short and clear.
+      </p>
+      <p>
+        You can add a second paragraph with more detail, links to a paper, or any other context.
+      </p>
+    </section>
+
+    <section>
+      <h2>Downloads</h2>
+      <ul class="download-list">
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">Dataset v1.0</div>
+            <div class="file-desc">Raw ATAC-seq data, CSV format, 120 MB</div>
+          </div>
+          <a class="btn" href="https://your-link-here.com/file1.csv" download>Download</a>
+        </li>
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">Processed Data</div>
+            <div class="file-desc">Filtered and normalized peaks, 45 MB</div>
+          </div>
+          <a class="btn" href="https://your-link-here.com/file2.zip" download>Download</a>
+        </li>
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">Analysis Script</div>
+            <div class="file-desc">Python script used for processing</div>
+          </div>
+          <a class="btn" href="https://your-link-here.com/script.py" download>Download</a>
+        </li>
+
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>For questions or feedback, reach out at <a href="mailto:you@example.com">you@example.com</a>.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2026 JAX ATAC &mdash; Hosted on GitHub Pages
+  </footer>
+
+</body>
+</html>
