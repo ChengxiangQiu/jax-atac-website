@@ -96,7 +96,7 @@
 <body>
 
   <header>
-    <h1>Evolutionary transfer learning of the regulatory grammar</h1>
+    <h1>Evolutionary transfer learning infers mammalian enhancer landscapes</h1>
   </header>
 
   <main>
@@ -104,36 +104,159 @@
     <section>
       <h2>Abstract</h2>
       <p>
-        Mammalian development is orchestrated by the interplay of trans-acting factors and cis-regulatory elements. However, while genome sequences evolve rapidly, the regulatory grammar that governs their interpretation evolves far more slowly. We hypothesized that this pronounced mismatch in evolutionary tempos creates a powerful opportunity for “evolutionary transfer learning”, in that models trained to learn cell type-specific cis-regulatory grammars in one mammalian species should generalize to the orthologous cell types of other mammals. To test this, we generated a time-resolved atlas of chromatin accessibility across mouse development from embryonic day 10 (E10) to birth (P0). Using single-cell combinatorial indexing, we profiled 3.9 million nuclei from 36 precisely staged embryos, resolving dynamic accessibility landscapes across 36 cell classes and 140 cell types. From these data, we applied a multi-output deep learning model, CREsted, to predict cell type-specific chromatin accessibility from DNA sequence. However, while “evolution-naive” models performed well within peak-defined regions, genome-wide inference revealed systematic failure modes, including overprediction at tandem repeats and conflation of promoter and distal enhancer grammars. To address this, we introduced an “evolution-aware” framework that isolates distal enhancer grammars by requiring both syntenic persistence and functional coherence across mammals, defined as sequence-intrinsic regulatory behavior that is concordant across enhancer orthologs and robust to in silico tandem repeat disruption. This updated CREsted model produced refined genomewide regulatory maps whose predicted enhancer activity scaled with enhancer score and enhancer–promoter proximity to explain cell type-specific gene expression. Incorporating syntenic enhancer orthologs from up to 240 placental mammals directly into training expanded the effective regulatory corpus by more than two orders of magnitude. Finally, applying the fully evolution-augmented model to the human genome yielded distal enhancer maps for orthologous human cell types. Taken together, our results unify advances in single-cell molecular profiling, deep learning, and comparative genomics into a framework for model-driven reconstruction of human cis-regulatory landscapes, including for cell types that emerge during the embryonic, fetal, and pediatric stages of human development that are largely inaccessible to molecular profiling. More broadly, our work supports the view that model organisms and evolutionarily diverse non-human genomes are indispensable resources for accelerating the AI-enabled exploration of human biology.
+        Understanding and modeling how mammalian genome encodes gene regulatory programs for thousands of cell types remains a central challenge in genomics and machine learning. To address this, we generated a single-cell atlas of chromatin accessibility spanning mouse embryonic day 10 (E10) to birth (P0). Using combinatorial indexing, we profiled 3.9 million nuclei from 36 staged embryos, resolving genome-wide accessibility in 36 cell classes and 140 cell types. With the goal of identifying distal enhancers for all cell classes, we then trained a series of multi-output deep learning models (CREsted), each addressing limitations of the preceding approach. An ‘evolution-naive’ model achieved strong performance on heldout peaks, but exhibited two failure modes during genome-wide inference: overprediction at tandem repeats and conflation of promoter and distal enhancer grammars. An ‘evolution-aware’ model resolved both by regrouping accessible regions based on functional coherence across syntenic orthologs, but failed to generalize across species — suggesting insufficient sequence diversity during training. Finally, STEAM (Synteny-aware Transfer learning for Enhancer Activity Modeling), our 'evolution-augmented' model, expanded the training corpus to include enhancer orthologs from up to 240 mammalian genomes (Zoonomia) in a synteny-supervised manner, increasing the effective data scale by 195-fold. Despite increased label noise, STEAM learns a regulatory grammar that generalizes across mammals, supporting inference of genome-wide enhancer maps for 32 human and mouse cell classes (HumMus), as well as for other mammalian genomes (BabaGanoush). Together, our results unify advances in single-cell profiling, deep learning, and comparative genomics into a framework for the evolutionary transfer learning of noncoding regulatory grammars. More broadly, our work supports the view that model organisms and evolutionarily diverse genomes are indispensable resources for accelerating the AI-enabled exploration of human biology.
       </p>
     </section>
 
     <section>
-      <h2>Downloads</h2>
+      <h2>Count matrices</h2>
       <ul class="download-list">
 
         <li>
           <div class="file-info">
-            <div class="file-name">Dataset v1.0</div>
-            <div class="file-desc">Raw ATAC-seq data, CSV format, 120 MB</div>
+            <div class="file-name">Cell metadata</div>
+            <div class="file-desc">3,937,903 cells, CSV format, 616 MB</div>
           </div>
-          <a class="btn" href="https://your-link-here.com/file1.csv" download>Download</a>
+          <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/backup/jax_atac/download/data_matrix/df_cell.csv" download>Download</a>
         </li>
 
         <li>
           <div class="file-info">
-            <div class="file-name">Processed Data</div>
-            <div class="file-desc">Filtered and normalized peaks, 45 MB</div>
+            <div class="file-name">Cell x Peak matrices by</div>
+            <div class="file-desc">h5ad format</div>
           </div>
-          <a class="btn" href="https://your-link-here.com/file2.zip" download>Download</a>
+            <div class="file-actions">
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/backup/jax_atac/download/data_matrix/atac_peaks_by_sample.h5ad" download>Samples</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/backup/jax_atac/download/data_matrix/atac_peaks_by_L1_cell_lineage.h5ad" download>L1 lineages</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/backup/jax_atac/download/data_matrix/atac_peaks_by_L2_cell_class.h5ad" download>L2 classes</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/backup/jax_atac/download/data_matrix/atac_peaks_by_L3_cell_type.h5ad" download>L3 types</a>
+          </div>
         </li>
 
         <li>
           <div class="file-info">
-            <div class="file-name">Analysis Script</div>
-            <div class="file-desc">Python script used for processing</div>
+            <div class="file-name">Fragments</div>
+            <div class="file-desc">by samples, L1 cell lineages, L2 cell classes, or L3 cell types</div>
           </div>
-          <a class="btn" href="https://your-link-here.com/script.py" download>Download</a>
+          </div>
+            <div class="file-actions">
+            <a class="btn" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?&acc=GSE325776" download>GEO</a>
+            <a class="btn" href="https://github.com/ChengxiangQiu/jax-atac-code/blob/main/help_code/reorganize_fragments.py" download>Script</a>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <section>
+      <h2>CREsted models</h2>
+      <ul class="download-list">
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">Evolution-naive model</div>
+            <div class="file-desc">CREsted/1.4.0, keras/3.5.0, 62 MB</div>
+          </div>
+          <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/backup/jax_atac/download/CREsted_model/evolution_naive_model.tar.gz" download>Download</a>
+        </li>
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">Evolution-aware model</div>
+            <div class="file-desc">CREsted/1.4.0, keras/3.5.0, 67 MB</div>
+          </div>
+          <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/backup/jax_atac/download/CREsted_model/evolution_aware_model.tar.gz" download>Download</a>
+        </li>
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">STEAM-v1 model</div>
+            <div class="file-desc">CREsted/1.4.0, keras/3.13.2, 73 MB</div>
+          </div>
+          <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/backup/jax_atac/download/CREsted_model/STEAM_v1_model.tar.gz" download>Download</a>
+        </li>
+
+      </ul>
+    </section>
+
+    <section>
+      <h2>Measured & predicted tracks</h2>
+      <ul class="download-list">
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">Raw</div>
+            <div class="file-desc">Tn5 cut sites were aggregated across cells and normalized to CPM</div>
+          </div>
+            <div class="file-actions">
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_L2_mouse_raw_data/hub.txt" download>Hub</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_L2_mouse_raw_data/mm10/" download>BigWig</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">Evoluation-naive</div>
+            <div class="file-desc">100-bp resolution of mm10</div>
+          </div>
+            <div class="file-actions">
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_L2_mouse_prediction/hub.txt" download>Hub</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_L2_mouse_prediction/mm10/" download>BigWig</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">Evoluation-aware</div>
+            <div class="file-desc">100-bp resolution of mm10</div>
+          </div>
+            <div class="file-actions">
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_32_clusters_mouse_prediction/hub.txt" download>Hub</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_32_clusters_mouse_prediction/mm10/" download>BigWig</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_32_clusters_mouse_prediction_Phred_narrow/hub.txt" download>Hub (Phred)</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_32_clusters_mouse_prediction_Phred_narrow/mm10/" download>BigWig (Phred)</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">STEAM-v1</div>
+            <div class="file-desc">100-bp resolution of mm10</div>
+          </div>
+            <div class="file-actions">
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_augmented_mouse_prediction/hub.txt" download>Hub</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_augmented_mouse_prediction/mm10/" download>BigWig</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_augmented_mouse_prediction_Phred_narrow/hub.txt" download>Hub (Phred)</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_augmented_mouse_prediction_Phred_narrow/mm10/" download>BigWig (Phred)</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">STEAM-v1</div>
+            <div class="file-desc">100-bp resolution of hg38</div>
+          </div>
+            <div class="file-actions">
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_augmented_human_prediction/hub.txt" download>Hub</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_augmented_human_prediction/hg38/" download>BigWig</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_augmented_human_prediction_Phred_narrow/hub.txt" download>Hub (Phred)</a>
+            <a class="btn" href="https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/jax_atac_augmented_human_prediction_Phred_narrow/hg38/" download>BigWig (Phred)</a>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code</h2>
+      <ul class="download-list">
+
+        <li>
+          <div class="file-info">
+            <div class="file-name">Github</div>
+            <div class="file-desc">Code used for data processing, analysis, and figure reproduction</div>
+          </div>
+          <a class="btn" href="https://github.com/ChengxiangQiu/jax-atac-code" download>Link</a>
         </li>
 
       </ul>
